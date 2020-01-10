@@ -7,7 +7,6 @@ services:
   nginx:
     depends_on:
       - api
-      - worker
       - client
     restart: always
     build:
