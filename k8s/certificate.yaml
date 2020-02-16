@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: k8skubernetes-com-tls
+spec:
+  secretName: k8skubernetes-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: k8skubernetes.com
+  dnsNames:
+    - k8skubernetes.com
+    - www.k8skubernetes.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - k8skubernetes.com
+          - www.k8skubernetes.com
